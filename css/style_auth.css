@@ -1,0 +1,83 @@
+#reg, #auth {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+}
+
+/* Стили для меток */
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Стили для полей ввода */
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  display: block;
+  width: 95%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+/* Стили для кнопки отправки */
+button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  float: right;
+}
+
+button[id="btn-reg"] {
+  background-color: #008CBA;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Стили для кнопки отправки при наведении курсора */
+button[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+button[id="btn-reg"]:hover {
+  background-color: #007DAF;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30px;
+}
+#my_message {
+  display: none;
+  height: 0;
+  overflow: hidden;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  color: #333;
+  transition: height 0.5s ease-in-out;
+  max-width: 500px;
+  margin: 20px auto;
+  text-align: center;
+}
