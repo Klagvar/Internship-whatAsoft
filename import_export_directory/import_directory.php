@@ -37,75 +37,88 @@
         $fileSize = $_FILES['file']['size'];
         $fileType = $_FILES['file']['type'];
        
-        // Открытие файла CSV для чтения данных
-        if (($handle = fopen($fileName, "r")) !== FALSE) {
-            // Добавление BOM для кодировки UTF-8
-            $csv = "\xEF\xBB\xBF";
-                
-            $row_number = 0;
-            $header_row = true;
-            // Чтение данных из файла CSV и запись в переменную $csv
-            while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
-                if ($header_row) {
-                    // Пропуск первой строки с заголовками столбцов
-                    $header_row = false;
-                    continue;
-                }
+        $targetDirectory = '../import_export_directory/';
+        $targetFilePath = $targetDirectory . $fileName;
 
-                $num = count($data);
-                for ($c = 0; $c < $num; $c++) {
-                    if($c == 0){
-                        // Первый столбец - id (автоинкремент)
+        if(move_uploaded_file($fileTmpName, $targetFilePath)) {
+            // Файл успешно загружен на сервер
+            // Открытие файла CSV для чтения данных
+            if (($handle = fopen($fileName, "r")) !== FALSE) {
+                // Добавление BOM для кодировки UTF-8
+                $csv = "\xEF\xBB\xBF";
+                    
+                $row_number = 0;
+                $header_row = true;
+                // Чтение данных из файла CSV и запись в переменную $csv
+                while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
+                    if ($header_row) {
+                        // Пропуск первой строки с заголовками столбцов
+                        $header_row = false;
                         continue;
-                    } else if ($c == 1){
-                        // Второй столбец - name (строка)
-                        $name = mysqli_real_escape_string($conn,$data[$c]);
-                    } else if ($c == 2){
-                        // Третий столбец - description (строка)
-                        $description = mysqli_real_escape_string($conn,$data[$c]);
-                    } else if ($c == 3){
-                        // Четвертый столбец - difficulty (число)
-                        $difficulty = mysqli_real_escape_string($conn,$data[$c]);
-                        if($difficulty == '')
-                            $difficulty = 3;
                     }
-                }
-                   
-                //Экранирование name
-                $name = str_replace("<", "&lt;", $name);
-                $name = str_replace(">", "&gt;", $name);
 
-                //Экранирование decription
-                $description = str_replace("<", "&lt;", $description);
-                $description = str_replace(">", "&gt;", $description);
-
-                //Деэкранирование теков <b></b>, <u></u>, <br> в decription
-                $description = str_replace("&lt;b&gt;", "<b>", $description);
-                $description = str_replace("&lt;/b&gt;", "</b>", $description);
-                $description = str_replace("&lt;u&gt;", "<u>", $description);
-                $description = str_replace("&lt;/u&gt;", "</u>", $description);
-                $description = str_replace("&lt;br&gt;", "<br>", $description);
-
-                // Формируем запрос на добавление строки в таблицу БД
-                $sql = "INSERT INTO directory(name,description,difficulty) VALUES ('$name','$description', $difficulty)";
-                   
-                // Выполнение запроса к базе данных с логированием ошибок 
-                if(checkData($name, $description, $difficulty)){
-                    if (!$result = mysqli_query($conn,$sql)) { 
-                        error_log("Ошибка при выполнении запроса: ".mysqli_error($conn));
-                        echo "Ошибка при выполнении запроса: ".mysqli_error($conn);
+                    $num = count($data);
+                    for ($c = 0; $c < $num; $c++) {
+                        if($c == 0){
+                            // Первый столбец - id (автоинкремент)
+                            continue;
+                        } else if ($c == 1){
+                            // Второй столбец - name (строка)
+                            $name = mysqli_real_escape_string($conn,$data[$c]);
+                        } else if ($c == 2){
+                            // Третий столбец - description (строка)
+                            $description = mysqli_real_escape_string($conn,$data[$c]);
+                        } else if ($c == 3){
+                            // Четвертый столбец - difficulty (число)
+                            $difficulty = mysqli_real_escape_string($conn,$data[$c]);
+                            if($difficulty == '')
+                                $difficulty = 3;
+                        }
                     }
+                       
+                    //Экранирование name
+                    $name = str_replace("<", "&lt;", $name);
+                    $name = str_replace(">", "&gt;", $name);
+
+                    //Экранирование decription
+                    $description = str_replace("<", "&lt;", $description);
+                    $description = str_replace(">", "&gt;", $description);
+
+                    //Деэкранирование теков <b></b>, <u></u>, <br> в decription
+                    $description = str_replace("&lt;b&gt;", "<b>", $description);
+                    $description = str_replace("&lt;/b&gt;", "</b>", $description);
+                    $description = str_replace("&lt;u&gt;", "<u>", $description);
+                    $description = str_replace("&lt;/u&gt;", "</u>", $description);
+                    $description = str_replace("&lt;br&gt;", "<br>", $description);
+
+                    // Формируем запрос на добавление строки в таблицу БД
+                    $sql = "INSERT INTO directory(name,description,difficulty) VALUES ('$name','$description', $difficulty)";
+                       
+                    // Выполнение запроса к базе данных с логированием ошибок 
+                    if(checkData($name, $description, $difficulty)){
+                        if (!$result = mysqli_query($conn,$sql)) { 
+                            error_log("Ошибка при выполнении запроса: ".mysqli_error($conn));
+                            echo "Ошибка при выполнении запроса: ".mysqli_error($conn);
+                        }
+                    }
+                    $row_number++;
                 }
-                $row_number++;
+                fclose($handle);
+                echo "Файл успешно загружен!";
+                $logDirectory = '../import_export_directory/';
+                $logMessage = date('Y-m-d H:i:s') . " - Обработан файл: " . $fileName . PHP_EOL;
+                $logFile = $logDirectory . 'import.log';
+                file_put_contents($logFile, $logMessage, FILE_APPEND);
+                unlink($targetFilePath);
+            } else {
+                echo "Ошибка при открытии файла";
+                unlink($targetFilePath);
             }
-            fclose($handle);
-            echo "Файл успешно загружен!";
-        } else {
-            echo "Ошибка при открытии файла";
-        }
-    } else {
+        } else 
+            echo 'Ошибка при загрузке файла на сервер';
+    } else 
         echo 'Файл не был отправлен';
-    }
+    
 
     // Закрытие подключения к базе данных
     $conn->close();

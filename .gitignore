@@ -1,3 +1,4 @@
 #игнорирование access.log и error.log
 access.log
 error.log
+/import_export_directory/import.log
