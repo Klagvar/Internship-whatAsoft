@@ -10,34 +10,35 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // Установка кодировки UTF-8 для соединения с базой данных
     $conn->set_charset("utf8");
-
-    // Выборка всех терминов из базы данных
     $sql = "SELECT * FROM directory";
     $result = $conn->query($sql);
 
-    // Открытие файла CSV для записи
-    $file = fopen("directory_export.csv", "w");
+    // Генерация названия файла
+    $date = date('d-m-Y'); 
+    $filename = "directory_export_" . $date . ".csv";
 
-    // Добавление BOM для кодировки UTF-8
-    fwrite($file, "\xEF\xBB\xBF");
+    // Установка заголовков HTTP
+    header('Content-Type: text/csv; charset=utf-8');
+    header('Content-Disposition: attachment; filename=' . $filename);
 
     // Запись данных в файл CSV
-    if ($result->num_rows > 0) {
-        // Запись заголовков столбцов (если необходимо)
-        $headers = array("id", "name", "description", "difficulty"); // Замените на свои заголовки
-        fputcsv($file, $headers, ';');
-
-        // Запись данных
-        while ($row = $result->fetch_assoc()) {
-            fputcsv($file, $row, ';');
+    $output = fopen('php://output', 'w');
+    fwrite($output, "\xEF\xBB\xBF"); // BOM для корректного отображения русских символов
+    
+    if ($result->num_rows > 0) 
+    {
+        $headers = array("id", "name", "description", "difficulty"); 
+        fputcsv($output, $headers, ';');
+        while ($row = $result->fetch_assoc()) 
+        {
+            fputcsv($output, $row, ';');
         }
-    } else {
+    } else 
+    {
         echo "0 results";
     }
 
-    // Закрытие файла и подключения к базе данных
-    fclose($file);
+    fclose($output);
     $conn->close();
 ?>

@@ -73,6 +73,8 @@ session_start();
                 <button type="submit" value="Save">Отправить</button>
             </form>
             <br>
+            <button onclick="location.href='import_export_directory/export_directory.php'">Выгрузить бд</button>
+            <br><br>
             <button onclick="location.href='import_export_directory/import_directory.php'">Загрузить бд</button>
         <?php }?>
             <div></div>
