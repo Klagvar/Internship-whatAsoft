@@ -1,4 +1,5 @@
 <?php
+    session_start(); 
     if (!$_POST) exit('No direct script access allowed');
     $data = $_POST["f"];
     if (isset($data["name"]) && isset($data["surname"])) {
@@ -26,7 +27,6 @@
                 // если добавлена как минимум одна строка
                 if($affectedRowsNumber > 0 ){
                     echo "Data successfully added: name = " . $data["name"] . "; surname = " . $data["surname"]; 
-                    session_start(); 
                     $_SESSION["user"]["surname"] = $data["surname"];
                     $_SESSION["user"]["name"] = $data["name"];
                 }
