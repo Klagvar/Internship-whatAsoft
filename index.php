@@ -34,7 +34,7 @@ if(!isset($_SESSION['user'])) {
             <?php
             //Вывод таблицы
             try {
-                $conn = new PDO("mysql:host=localhost;dbname=whatasoft", "root", "root");
+                $conn = new PDO("mysql:host=localhost;dbname=u0860712_sandbox3", "u0860712_sand3", "P6c6D9e3");
                 $sql = "SELECT * FROM directory";
                 $result = $conn->query($sql);
                 echo '<table id="table" class="table_sort"><thead><tr><th>id</th><th id="name" >name</th><th>description</th><th>difficulty</th></tr></thead>';

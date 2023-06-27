@@ -11,7 +11,7 @@
             $data["surname"] = str_replace(">", "&gt;", $data["surname"]);
 
             try {
-                $conn = new PDO("mysql:host=localhost;dbname=whatasoft", "root", "root");
+                $conn = new PDO("mysql:host=localhost;dbname=u0860712_sandbox3", "u0860712_sand3", "P6c6D9e3");
                 $sql = "UPDATE users SET surname = :surname, name = :name WHERE id = :id";
                 //определяем prepared statement
                 $stmt = $conn->prepare($sql);
