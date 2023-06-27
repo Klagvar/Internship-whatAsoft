@@ -1,5 +1,9 @@
 <?php
 session_start();
+if(!isset($_SESSION['user'])) { 
+    $new_url = 'auth/auth.php';
+    header('Location: '.$new_url);
+    } else {
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,11 +16,6 @@ session_start();
         <script defer src="js/ajax.js"></script>
     </head>
     <body>
-        <?php if(!isset($_SESSION['user'])) { 
-            $new_url = 'auth/auth.php';
-            header('Location: '.$new_url);
-            } else {?>
-            
             <div class="user-info">
                 <div class="user-details">
                     <p><?php echo "Ваша фамилия: " . $_SESSION['user']['surname']; ?></p>
@@ -74,7 +73,7 @@ session_start();
             </form>
             <br>
             <button onclick="location.href='import_export_directory/export_directory.php'">Выгрузить бд</button>
-            <br><br>
+            <br>
             <button onclick="location.href='import_export_directory/import_directory.php'">Загрузить бд</button>
         <?php }?>
             <div></div>
