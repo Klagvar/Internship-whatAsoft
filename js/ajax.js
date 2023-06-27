@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 //$('#my_form').hide('slow');
                 //location.reload();
                 $('#my_message').html(msg);
-                window.location = '../index.php';
+                //window.location = '../index.php';
             }
         );
         return false;
