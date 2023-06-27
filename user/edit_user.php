@@ -26,7 +26,6 @@
                 // если добавлена как минимум одна строка
                 if($affectedRowsNumber > 0 ){
                     echo "Data successfully added: name = " . $data["name"] . "; surname = " . $data["surname"];  
-                    session_start();
                     $_SESSION["user"]["surname"] = $data["surname"];
                     $_SESSION["user"]["name"] = $data["name"];
                 }

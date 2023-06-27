@@ -73,7 +73,7 @@ if(!isset($_SESSION['user'])) {
             </form>
             <br>
             <button onclick="location.href='import_export_directory/export_directory.php'">Выгрузить бд</button>
-            <br>
+            <br><br>
             <button onclick="location.href='import_export_directory/import_directory.php'">Загрузить бд</button>
         <?php }?>
             <div></div>
