@@ -15,19 +15,20 @@ session_start();
 			$new_url = '../index.php';
             header('Location: '.$new_url);
 		 } else { ?>
-			<h2>Авторизация</h2>
-			<form id="auth">
-	            <label for="login">Login:</label>
-	            <input id="login" type="text" name="f[login]" required />
+		 	<div class="auth">
+				<form id="auth">
+					<h3>Авторизация</h3>
+		            <label for="login">Логин:</label>
+		            <input id="login" type="text" name="f[login]" required />
 
-	            <label for="pass">Password:</label>
-	            <input id="pass" minlength="6" type="password" name="f[pass]" required />
+		            <label for="pass">Пароль:</label>
+		            <input id="pass" minlength="6" type="password" name="f[pass]" required />
 
-	    		<button id="btn-reg" type ="button" onclick="location.href='../reg/reg.php'">Зарегистрироваться</button>
-	    		<button id="btn-auth" type="submit" value="Save">Войти</button>
-	        </form>
-
-	        <div id="my_message"></div>
+		    		<button id="btn-reg" type ="button" onclick="location.href='../reg/reg.php'">Зарегистрироваться</button>
+		    		<button id="btn-auth" type="submit" value="Save">Войти</button>
+		        </form>
+		        <div id="my_message"></div>
+		    </div>
         <?php } ?>
 	</body>
 </html>

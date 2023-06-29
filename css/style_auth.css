@@ -1,17 +1,38 @@
-#reg, #auth {
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f5f5f5;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  background-color: #1C181C;
+  font-family: Arial, sans-serif;
+  color: #E7A624;
+}
 
+.auth, .reg, .edit_user, .edit_directory{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+#reg, #auth, #edit_user, #edit_directory {
+  background-color: #E7A624;
+  color: #1C181C;
+  padding: 20px;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+
+h3 {
+  margin-top: 0;
 }
 
 /* Стили для меток */
 label {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   font-weight: bold;
 }
 
@@ -19,65 +40,61 @@ label {
 
 input[type="text"],
 input[type="email"],
-input[type="password"] {
-  display: block;
-  width: 95%;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  margin-bottom: 20px;
+input[type="password"],
+input[type="number"] {
+  width: 100%;
+  padding: 5px;
+  border: none;
+  border-bottom: 1px solid #1C181C;
+  background-color: inherit; 
+  color: inherit; 
+  outline: none;
   font-size: 16px;
+  margin-bottom: 20px;
 }
 
 /* Стили для кнопки отправки */
 button[type="submit"] {
-  background-color: #4CAF50;
-  color: white;
   padding: 10px 20px;
+  background-color: #1C181C;
+  color: #E7A624;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
   float: right;
 }
 
 button[id="btn-reg"] {
-  background-color: #008CBA;
-  color: white;
+  background-color: #1C181C;
+  color: #E7A624;
   padding: 10px 20px;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
 }
 
-/* Стили для кнопки отправки при наведении курсора */
 button[type="submit"]:hover {
-  background-color: #3e8e41;
+  background-color: #111;
 }
 
 button[id="btn-reg"]:hover {
-  background-color: #007DAF;
+  background-color: #111;
 }
 
-h2 {
-  font-size: 28px;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 30px;
-}
 #my_message {
+  float: center;
   display: none;
   height: 0;
   overflow: hidden;
-  background-color: #f5f5f5;
-  border: 1px solid #ccc;
+  background-color: #E7A624;
   border-radius: 5px;
   padding: 10px;
   font-size: 16px;
-  color: #333;
+  color: #1C181C;
   transition: height 0.5s ease-in-out;
-  max-width: 500px;
+  /*max-width: 500px;*/
   margin: 20px auto;
   text-align: center;
 }

@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="../css/style_import_directory.css">
         <meta charset="utf-8">
         <title>Загрузка бд</title>
     </head>
     <body>
-        <form action="../import_export_directory/import_directory.php" method="post" enctype="multipart/form-data">
-            <input type="file" name="file">
-            <input type="submit" value="Загрузить файл">
-        </form>
-        <br>
-        <button onclick="location.href='../index.php'">Вернуться</button>
-        <br><br>
-    </body>
+        <div class="import">
+            <form id="import" action="../import_export_directory/import_directory.php" method="post" enctype="multipart/form-data">
+                <input type="file" name="file">
+                <button type="submit" value="Загрузить файл">Загрузить файл</button>
+            </form>
+            <div class="button-container">
+                <button onclick="location.href='../index.php'">Вернуться</button>
+            </div>
+            <div id="my_message">
+    
     <?php
     $host = "localhost";
     $user = "u0860712_sand3";
@@ -143,4 +145,7 @@
         return true; // Все проверки пройдены, данные допустимы
     }
     ?>
+            </div>
+        </div>
+    </body>
 </html>

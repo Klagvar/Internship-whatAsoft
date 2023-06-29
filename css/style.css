@@ -1,60 +1,151 @@
+body {
+    background-color: #1C181C;
+    font-family: Arial, sans-serif;
+    color: #E7A624;
+}
+
+@media (min-width: 1600px) {
+  body {
+    padding: 0 20%; /* Используйте нужные значения отступов */
+  }
+}
+
+/* Экраны меньше 1600px, но шире 600px */
+@media (max-width: 1600px) {
+  body {
+    padding: 0 15%; /* Используйте другие значения отступов */
+  }
+}
+
+/*Стили для шапки*/
 .user-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #A13632;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .user-details {
-    margin-right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.user-details > div {
+  margin-right: 10px;
+}
+
+.user-details button {
+  padding: 9px 14px;
+  background-color: #1d1924;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.user-details button:hover {
+  background-color: #333;
+}
+
+.user-details p {
+  color: white;
+  margin: 0;
 }
 
 .user-greeting {
-    display: flex;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .user-greeting h3 {
-    margin: 0;
-    margin-right: 10px;
+  color: white;
+  margin: 0;
 }
 
-#my_message {
-  float: left;
-  display: none;
-  height: 0;
-  overflow: hidden;
-  background-color: #f5f5f5;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  font-size: 16px;
-  color: #333;
-  transition: height 0.5s ease-in-out;
-  max-width: 500px;
-  margin: 20px auto;
+.user-greeting button {
+  padding: 9px 14px; /* Увеличение размера кнопки */
+  background-color: #f44336; /* Изменение цвета кнопки */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 15px; /* Увеличение размера шрифта кнопки */
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.user-greeting button:hover {
+  background-color: #e53935; /* Изменение цвета кнопки при наведении */
+}
+
+
+/* Стили для таблицы */
+#table-container {
   text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: #E7A624;
+  padding: 10px;
 }
 
-table { 
-    border-collapse: collapse;
+#table-container h3 {
+  margin-top: 10px;
+  color: #1C181C;
 }
 
-.table_sort th {
-    background: #d8d8d8;
-    cursor: pointer;
+#table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  table-layout: fixed;
 }
 
-.table_sort td,
-.table_sort th {
-    width: 110px;
-    padding: 8px;
-    text-align: center;
-    border: 1px solid black;
+#table th,
+#table td {
+  padding: 8px;
+  border-bottom: 1px solid #1C181C;
+  text-align: left;
+  background-color: #E7A624;
+  color: #1C181C;
 }
 
-.table_sort tbody tr:nth-child(odd){
-    background: #F7F7F7;
+#table td {
+    word-wrap: break-word;
+    word-break: break-all;
+}   
+
+#table tbody tr:last-child td {
+  border-bottom: none;
 }
+
+#table a {
+  color: #1C181C;
+  text-decoration: none;
+}
+
+#table a:hover {
+  text-decoration: underline;
+}
+
+#table input[type="submit"] {
+  padding: 6px 10px;
+  background-color: #1C181C;
+  color: #E7A624;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#table input[type="submit"]:hover {
+  background-color: #111;
+}
+
 
 th.sorted[data-order="1"],
 th.sorted[data-order="-1"] {
@@ -75,6 +166,96 @@ th.sorted[data-order="1"]::after {
     content: "▲";
 }
 
+/*Стиль формы добавление*/
+
+#adding {
+  background-color: #E7A624;
+  color: #1C181C;
+  padding: 20px;
+  border-radius: 5px;
+  width: 60%;
+  margin: 0 auto;
+}
+
+#adding h3 {
+  margin-top: 0;
+}
+
+#adding p {
+  margin-bottom: 10px;
+}
+
+#adding input[type="text"],
+#adding textarea,
+#adding input[type="number"] {
+  width: 100%;
+  padding: 5px;
+  border: none;
+  border-bottom: 1px solid #1C181C;
+  background-color: inherit; 
+  color: inherit; 
+  outline: none;
+  font-size: 16px;
+}
+
+#adding textarea {
+  resize: vertical;
+  max-height: 200px;
+  font-size: 16px;
+}
+
+#adding button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #1C181C;
+  color: #E7A624;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#adding button[type="submit"]:hover {
+  background-color: #111;
+}
+
+/*Стили для кнопок загрузки выгрузки бд*/
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.button-container button {
+  padding: 10px 20px;
+  background-color: #E7A624;
+  color: #1C181C;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+.button-container button:hover {
+  background-color: #C6921E;
+}
+
 label {
   vertical-align: top;
+}
+
+#my_message {
+  float: center;
+  display: none;
+  height: 0;
+  overflow: hidden;
+  background-color: #E7A624;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  color: #1C181C;
+  transition: height 0.5s ease-in-out;
+  max-width: 500px;
+  margin: 20px auto;
+  text-align: center;
 }
