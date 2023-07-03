@@ -11,19 +11,19 @@
 		<div class = 'reg'>
 			<form id="reg">
 				<h3>Регистрация</h3>
-				<label for="surname">Surame:</label>
+				<label for="surname">Фамилия:</label>
 	            <input id="surname" type="text" name="f[surname]" required />
 
-	            <label for="name">Name:</label>
+	            <label for="name">Имя:</label>
 	            <input id="name" type="text" name="f[name]" required />
 
 	            <label for="email">Email:</label>
 	            <input id="email" type="email" name="f[email]" required />
 
-	            <label for="login">Login:</label>
+	            <label for="login">Логин:</label>
 	            <input id="login" type="text" name="f[login]" required />
 
-	            <label for="pass">Password:</label>
+	            <label for="pass">Пароль:</label>
 	            <input id="pass" minlength="6" type="password" name="f[pass]" required />
 	            
 	            <button id="btn-reg" type="button" onclick="location.href='../auth/auth.php'">Войти</button>
