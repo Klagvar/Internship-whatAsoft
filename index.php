@@ -60,6 +60,8 @@ if(!isset($_SESSION['user'])) {
                     }
                     echo "</tbody>";
                     echo "</table>";
+                    echo dirname(__FILE__);
+
                 }
                 catch (PDOException $e) {
                     echo "Database error: " . $e->getMessage();
