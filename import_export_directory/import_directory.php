@@ -97,11 +97,15 @@
                     $sql = "INSERT INTO directory(name,description,difficulty) VALUES ('$name','$description', $difficulty)";
                        
                     // Выполнение запроса к базе данных с логированием ошибок 
-                    if(checkData($name, $description, $difficulty)){
-                        if (!$result = mysqli_query($conn,$sql)) { 
+                    if(checkData($name, $description, $difficulty))
+                    {
+                        if (!$result = mysqli_query($conn,$sql)) 
+                        { 
                             error_log("Ошибка при выполнении запроса: ".mysqli_error($conn));
                             echo "Ошибка при выполнении запроса: ".mysqli_error($conn);
                         }
+                    } else {
+                        echo "Данные не прошли проверку: name: " . $name . "число символов: " . strlen($name) .", description: " . $description . ", difficulty: " . $difficulty . "<br>";
                     }
                     $row_number++;
                 }
@@ -128,7 +132,7 @@
     function checkData($name, $description, $difficulty) 
     {
         // Проверка названия
-        if (empty($name) || strlen($name) > 50) {
+        if (empty($name)) {
             return false; // Недопустимое название
         }
 

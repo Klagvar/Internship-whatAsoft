@@ -1,0 +1,2 @@
+﻿id;name;description;difficulty
+50;"<script> alert(""XSS Attack""); </script>";Тест из таблицы;3
