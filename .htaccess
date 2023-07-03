@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Restricted Content"
+AuthUserFile /var/www/u0860712/data/www/sandbox3.whatasoft.net/.htpasswd
+Require valid-user
