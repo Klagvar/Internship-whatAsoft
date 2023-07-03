@@ -7,10 +7,10 @@ if(isset($_POST["id"]))
         $stmt = $conn->prepare($sql);
         $stmt->bindValue(":id", $_POST["id"]);
         $stmt->execute();
-        header("Location: ../index.php");
+        echo json_encode(["success" => true]);
     }
     catch (PDOException $e) {
-        echo "Database error: " . $e->getMessage();
+        echo json_encode(["success" => false, "error" => "Database error: " . $e->getMessage()]);
     }
 }
 ?>

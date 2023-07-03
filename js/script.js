@@ -33,3 +33,30 @@ function del() {
         return false;
     }
 };
+
+function updateDirectory(id) {
+    window.location.href = '../directory/update_directory.php?id=' + id;
+}
+
+function deleteFromDirectory(id) {
+    if (confirm("Вы уверены, что хотите удалить запись?")) {
+            fetch('../directory/delete_from_directory.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: 'id=' + id
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    location.reload();
+                } else {
+                    alert("Ошибка при удалении записи");
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка:', error);
+            });
+        }
+}

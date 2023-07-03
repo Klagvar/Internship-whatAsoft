@@ -16,7 +16,7 @@ catch (PDOException $e) {
         <script defer src="../js/ajax.js"></script>
     </head>
     <body>
-        <div class = "edit_derectory">
+        <div class = "edit_directory">
             <?php
             // если запрос GET
             if($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"]))

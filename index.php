@@ -46,19 +46,16 @@ if(!isset($_SESSION['user'])) {
                     $conn = new PDO("mysql:host=localhost;dbname=u0860712_sandbox3", "u0860712_sand3", "P6c6D9e3");
                     $sql = "SELECT * FROM directory";
                     $result = $conn->query($sql);
-                    echo '<table id="table" class="table_sort"><thead><tr><th>id</th><th id="name" >name</th><th>description</th><th>difficulty</th><th></th><th></th></tr></thead>';
+                    echo '<table id="table" class="table_sort"><thead><tr><th>id</th><th id="name" >name</th><th>description</th><th>difficulty</th><th></th></tr></thead>';
                     echo "<tbody>";
                     while($row = $result->fetch()){
                         echo "<tr>";
                             echo "<td>" . $row["id"] . "</td>";
                             echo "<td>" . $row["name"] . "</td>";
                             echo "<td>" . $row["description"] . "</td>";
-                            echo "<td>" . $row["difficulty"] . "</td>";
-                            echo "<td><a href='directory/update_directory.php?id=" . $row["id"] . "'>Изменить</a></td>";
-                            echo "<td><form action='directory/delete_from_directory.php' method='post' onsubmit='return del()'>
-                                        <input type='hidden' name='id' value='" . $row['id'] . "' />
-                                        <input type ='submit' value='Удалить'>
-                                    </form></td>";
+                            echo "<td>" . $row["difficulty"] . "</td>";   
+                            echo "<td><button type='submit' onclick='updateDirectory(" . $row["id"] . ")'>Изменить</button>";
+                            echo "<button type='button' onclick='deleteFromDirectory(" . $row["id"] . ")'>Удалить</button></td>";
                         echo "</tr>";
                     }
                     echo "</tbody>";
