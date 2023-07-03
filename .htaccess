@@ -1,4 +1,6 @@
+<Files index.php>
 AuthType Basic
 AuthName "Restricted Content"
-AuthUserFile /.htpasswd
+AuthUserFile .../.htpasswd
 Require valid-user
+</Files>
