@@ -18,9 +18,9 @@
     
     <?php
     $host = "localhost";
-    $user = "u0860712_sand3";
-    $password = "P6c6D9e3";
-    $dbname = "u0860712_sandbox3";
+    $user = "root";
+    $password = "root";
+    $dbname = "whatAsoft";
 
     $conn = new mysqli($host, $user, $password, $dbname);
 

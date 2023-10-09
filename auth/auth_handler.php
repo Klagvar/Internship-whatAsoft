@@ -23,7 +23,7 @@
             $data["login"] = str_replace(">", "&gt;", $data["login"]);
             
         try {
-            $conn = new PDO("mysql:host=localhost;dbname=u0860712_sandbox3", "u0860712_sand3", "P6c6D9e3");
+            $conn = new PDO("mysql:host=localhost;dbname=whatAsoft", "root", "root");
             $sql = "SELECT * FROM users WHERE login=:login AND pass=:pass";
             //определяем prepared statement
             $stmt = $conn->prepare($sql);

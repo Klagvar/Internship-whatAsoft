@@ -18,7 +18,7 @@
 			$data["description"] = str_replace("&lt;br&gt;", "<br>", $data["description"]);
 
             try {
-                $conn = new PDO("mysql:host=localhost;dbname=u0860712_sandbox3", "u0860712_sand3", "P6c6D9e3");
+                $conn = new PDO("mysql:host=localhost;dbname=whatAsoft", "root", "root");
                 $sql = "UPDATE directory SET name = :name, description = :description, difficulty = :difficulty WHERE id = :id";
                 //определяем prepared statement
                 $stmt = $conn->prepare($sql);

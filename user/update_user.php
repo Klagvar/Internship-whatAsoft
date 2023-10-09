@@ -1,6 +1,6 @@
 <?php 
 try {
-    $conn = new PDO("mysql:host=localhost;dbname=u0860712_sandbox3", "u0860712_sand3", "P6c6D9e3");
+    $conn = new PDO("mysql:host=localhost;dbname=whatAsoft", "root", "root");
 }
 catch (PDOException $e) {
     die("Database error: " . $e->getMessage());
